@@ -31,10 +31,10 @@ const getPokemonById = async (req, res) => {
                 height: resp.data.height,
                 types: resp.data.types.map(ty => ty.type.name).join(", ")
             }
-            res.status(200).json(pokemonLink)
+            return res.status(200).json(pokemonLink)
         }
     } catch (error) {
-        res.status(400).send(error.message)
+        res.status(400).send("no existe ese pokemon")
     }
 }
 

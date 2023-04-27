@@ -1,0 +1,45 @@
+
+
+import React,{useState} from 'react';
+import { useDispatch} from 'react-redux'
+import { getAllPokemon,getPokemonsByName} from '../../redux/actions'
+
+  const PokeSearchBar = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const dispatch = useDispatch();
+
+    const handleChange = (event) => {
+      if(event.target.value===""){
+        dispatch(getAllPokemon())
+      }
+      setSearchTerm(event.target.value);
+    };
+
+    
+    const handleSearch = () => {
+      dispatch(getPokemonsByName(searchTerm));
+    };
+
+    const handleKeyPress = (event) => {
+      if (event.key === 'Enter') {
+        if(searchTerm.length!==0){
+          handleSearch();
+        }
+        // else dispatch((getAllPokemon()));
+      }
+    };
+
+  return (
+    <div>
+       <input
+        
+        placeholder="Buscar..."
+        value={searchTerm}
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+      />
+    </div>
+  )
+}
+
+export default PokeSearchBar

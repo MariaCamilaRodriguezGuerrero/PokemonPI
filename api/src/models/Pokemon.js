@@ -29,15 +29,15 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     attack: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     defense: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     speed: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     height: {

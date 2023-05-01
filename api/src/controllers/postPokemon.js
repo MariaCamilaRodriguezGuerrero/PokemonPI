@@ -4,7 +4,7 @@ const {Pokemon, Type} = require("../db")
 const postPokemon = async (req,res)=>{
     try {
         const {name,image,life,attack,defense,speed,height,weight,type1,type2}= req.body
-    if(!name|| !image || !life || !attack || !defense || !type1){
+    if(!name|| !image || !life || !attack || !defense ||!type1){
         res.status(400).send("completar todos los datos")
     }    
     const oldPokemonDB = await Pokemon.findOne({where:{name}})
@@ -30,8 +30,9 @@ const postPokemon = async (req,res)=>{
            return res.status(400).send(error.message)
         } 
 
-        const typePokemon1 = await Type.findOne({where:{name:type1}})
+        const typePokemon1 = await Type.findOne({where:{name:type1}})        
         await newPokemon.addType(typePokemon1)
+        
         if(type2){
             const typePokemon2 = await Type.findOne({where:{name:type2}})
             await newPokemon.addType(typePokemon2) 

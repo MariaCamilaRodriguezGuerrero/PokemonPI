@@ -4,10 +4,20 @@ export const GET_POKEMONS = "GET_POKEMONS"
 export const GET_POKEMONS_BY_ID ="GET_POKEMONS_BY_ID"
 export const DELETE_POKEMON ="DELETE_POKEMON"
 export const GET_POKEMON_BY_NAME = "GET_POKEMON_BY_NAME"
+export const GET_TYPES="GET_TYPES"
 
 export const deletePokemon = ()=>{
   return(dispatch)=>
   dispatch ({ type: DELETE_POKEMON }) 
+}
+
+export const getTypes =()=>{
+  const endpoint =`http://localhost:3001/types`
+  return async function (dispatch){
+    const allTypes = await axios.get(endpoint)
+    const types = allTypes.data
+    dispatch({type:GET_TYPES,payload:types})
+  }
 }
 
 export const getPokemonById =(id)=>{

@@ -6,8 +6,9 @@ const {Pokemon, Type} = require("../db")
 const getPokemons = async (req, res) => {
     const { name } = req.query
     try {
-        const response = await axios.get(`${URL}?offset=0&limit=80`)
+        const response = await axios.get(`${URL}?offset=0&limit=70`)
         const pokemons = response.data.results;
+console.log("estos son los pokemons: "+pokemons);
 
         const pokemonLink = await Promise.all(pokemons.map(async (poke) => {
             const resp = await axios.get(poke.url)            
@@ -21,7 +22,7 @@ const getPokemons = async (req, res) => {
                 speed: resp.data.stats[5].base_stat,
                 weight: resp.data.weight,
                 height: resp.data.height,
-                types: resp.data.types.map(ty => ty.type.name).join(", ")
+                types: resp.data.types.map(ty => ty.type.name).join(" y ")
             }
         })) 
         

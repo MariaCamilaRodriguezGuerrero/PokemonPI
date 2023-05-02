@@ -17,13 +17,12 @@ const postPokemon = async (req,res)=>{
         const newPokemon= await Pokemon.create({
             name,
             life,
-            image,
-            life,
+            image,            
             attack,
             defense,
             speed,
             height,
-            weight        
+            weight,                   
         })     
 
         if(!newPokemon){

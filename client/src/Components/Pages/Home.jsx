@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PokeSearchBar from '../Parts/PokeSearchBar';
+import PokeFiltros from "../Parts/PokeFiltros"
 import { PokeCard } from '../Parts/PokeCard';
 import PokePaginado from '../Parts/PokePaginado';
 import pokeImage from '../images/pokebolas.jpg';
@@ -22,6 +23,7 @@ function Home(props) {
 
   const pokemonsComplete = allPokemons?.pokemons.slice(startIndex, endIndex);
 
+
   useEffect(() => {
     dispatch(getAllPokemon());
   }, [dispatch]);
@@ -29,8 +31,12 @@ function Home(props) {
   return (
     <div>
       <h1>Welcome to Pokemon center</h1>
-      <PokeSearchBar/>
+      <PokeSearchBar/>      
       <div>
+    <div>
+      <h1>Pokefiltros</h1>
+    <PokeFiltros/>
+    </div>    
         <main>
           <section>
           {pokemonsComplete.length ? (

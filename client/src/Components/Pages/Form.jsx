@@ -63,14 +63,6 @@ function Form() {
 
   }
 
-  const validateNumber = (number, field) => {
-    const num = Math.floor(number);
-    const errorMessage = `El campo ${field} debe ser un número entre 1 y 100`;
-    return Number.isInteger(num) && num >= 1 && num <= 100
-      ? ""
-      : errorMessage;
-  };
-
   const validateForm = () => {
     for (const key in form) {
       if (form[key].trim() === "") {
@@ -78,27 +70,53 @@ function Form() {
       }
     }
     return true;
-  }; 
+  };
+
+  const validateNumber = (number) => {
+    const num = Math.floor(number)
+    console.log(typeof num);
+    return Number.isInteger(num) && num >= 1 && num <= 100;
+  };
 
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const error = {
-      name: validateName(form.name),
-      image: validateImage(form.image),
-      life: validateNumber(form.life, "vida"),
-      attack: validateNumber(form.attack, "ataque"),
-      defense: validateNumber(form.defense, "defensa"),
-      speed: validateNumber(form.speed, "velocidad"),
-      height: validateNumber(form.height, "altura"),
-      weight: validateNumber(form.weight, "peso"),
-    };
-  
-    if (Object.values(error).some((e) => e !== "")) {
-      setError(error);
+    if (!validateForm()) {
+      alert("Por favor, completa todos los campos.");
+      return;
+    }    
+
+    if (!validateNumber(form.life)) {
+      setError({ ...error, life: "La vida debe ser un número entre 1 y 100" })
+      return;
+    } 
+
+    if (!validateNumber(form.attack)) {
+      setError({ ...error, attack: "El ataque debe ser un número entre 1 y 100" })
       return;
     }
+
+    if (!validateNumber(form.defense)) {
+      setError({ ...error, defense: "La defensa debe ser un número entre 1 y 100" })
+      return;
+    }
+
+    if (!validateNumber(form.speed)) {
+      setError({ ...error, speed: "La velocidad debe ser un número entre 1 y 100" })
+      return;
+    }
+
+    if (!validateNumber(form.height)) {
+      setError({ ...error, height: "La altura debe ser un número entre 1 y 100" })
+      return;
+    }
+
+    if (!validateNumber(form.weight)) {
+      setError({ ...error, weight: "El peso debe ser un número entre 1 y 100" })
+      return;
+    }
+
 
     axios
       .post("http://localhost:3001/pokemons", form)
@@ -120,11 +138,7 @@ function Form() {
       </div>
       <div>
         <label>Imagen</label>
-        <input 
-  type="text" 
-  value={form.image} 
-  onChange={(event) => { 
-    changeHanlder(event);
+        <input type="text" value={form.image} onChange={(event) => { changeHanlder(event);
     if (validateImage(event.target.value)) {
       setError({ ...error, image: "" });
     } else {

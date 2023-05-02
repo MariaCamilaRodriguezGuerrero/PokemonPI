@@ -5,6 +5,9 @@ export const GET_POKEMONS_BY_ID ="GET_POKEMONS_BY_ID"
 export const DELETE_POKEMON ="DELETE_POKEMON"
 export const GET_POKEMON_BY_NAME = "GET_POKEMON_BY_NAME"
 export const GET_TYPES="GET_TYPES"
+export const FILTER_TYPE = "FILTER_TYPE"
+export const FILTER_ORIGIN="FILTER_ORIGIN"
+export const FILTER_ORDER="FILTER_ORDER"
 
 export const deletePokemon = ()=>{
   return(dispatch)=>
@@ -59,4 +62,26 @@ export const getAllPokemon = () => {
     dispatch({ type: GET_POKEMONS, payload: pokemons });
   };
 };
+
+export const filterType = (type)=>{
+  return{
+    type: FILTER_TYPE,
+    payload:type
+  }
+}
+
+export const filterOrigin=(origin)=>{
+  return{
+      type:FILTER_ORIGIN,
+      payload:origin
+  }
+}
+
+export const filterOrder=(order)=>{
+  
+  return{
+      type:FILTER_ORDER,
+      payload:order
+  }
+}
 

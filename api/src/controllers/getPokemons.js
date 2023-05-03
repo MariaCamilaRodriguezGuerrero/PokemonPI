@@ -6,9 +6,9 @@ const {Pokemon, Type} = require("../db")
 const getPokemons = async (req, res) => {
     const { name } = req.query
     try {
-        const response = await axios.get(`${URL}?offset=0&limit=70`)
+        const response = await axios.get(`${URL}?offset=0&limit=100`)
         const pokemons = response.data.results;
-console.log("estos son los pokemons: "+pokemons);
+// console.log("estos son los pokemons: "+pokemons);
 
         const pokemonLink = await Promise.all(pokemons.map(async (poke) => {
             const resp = await axios.get(poke.url)            
@@ -35,7 +35,30 @@ console.log("estos son los pokemons: "+pokemons);
                 }
             }
         })
-        const allPokemons = [...pokemonDB,...pokemonLink]
+
+        const tipe1 = pokemonDB.map(poke=>poke.Types[0].name)
+        const tipe2 = pokemonDB.map(poke=>poke.Types[1].name)
+
+       const pokemonDBWhitTipes=pokemonDB.map((poke) => {                  
+        return {
+            id: poke.id,
+            name: poke.name,
+            image: poke.image,
+            life: poke.life,
+            attack: poke.attack,
+            defense: poke.defense,
+            speed: poke.speed,
+            weight: poke.height,
+            height: poke.weight,
+            types:poke.Types[0].name+ " y "+poke.Types[1].name
+        }
+    }
+
+       )
+
+
+
+        const allPokemons = [...pokemonDBWhitTipes,...pokemonLink]
 
         if (!name) {
            return res.status(200).json(allPokemons)
@@ -57,3 +80,7 @@ console.log("estos son los pokemons: "+pokemons);
 
 
 module.exports = { getPokemons }
+
+
+
+

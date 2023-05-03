@@ -85,12 +85,12 @@ function Form() {
     if (!validateForm()) {
       alert("Por favor, completa todos los campos.");
       return;
-    }    
+    }
 
     if (!validateNumber(form.life)) {
       setError({ ...error, life: "La vida debe ser un número entre 1 y 100" })
       return;
-    } 
+    }
 
     if (!validateNumber(form.attack)) {
       setError({ ...error, attack: "El ataque debe ser un número entre 1 y 100" })
@@ -120,8 +120,12 @@ function Form() {
 
     axios
       .post("http://localhost:3001/pokemons", form)
-      .then((res) => alert("Pokemon has been created"))
-      .catch((err) => alert(err));
+      .then((res) => alert("Tu Pokemon ha sido creado "))
+      .catch((err) => {
+        if (err.response.status == 403) { alert("Este pokemon ya existe, intenta creando uno propio") } else if (err.response.status === 402) {
+          alert("Ya se ha creado este pokemon anteriormente,animate a buscar otro nombre")
+        }
+      });
 
   };
 
@@ -138,51 +142,104 @@ function Form() {
       </div>
       <div>
         <label>Imagen</label>
-        <input type="text" value={form.image} onChange={(event) => { changeHanlder(event);
-    if (validateImage(event.target.value)) {
-      setError({ ...error, image: "" });
-    } else {
-      setError({ ...error, image: "El link de la imagen es inválido" });
-    }
-  }} 
-  name="image"
-/>
-<p>{error.image}</p>
+        <input type="text" value={form.image} onChange={(event) => {
+          changeHanlder(event);
+          if (validateImage(event.target.value)) {
+            setError({ ...error, image: "" });
+          } else {
+            setError({ ...error, image: "El link de la imagen es inválido" });
+          }
+        }}
+          name="image"
+        />
+        <p>{error.image}</p>
 
       </div>
       <div>
         <label>Vida</label>
-        <input type="number" value={form.life} onChange={changeHanlder} name="life" />
+        <input type="number" value={form.life} onChange={(event) => {
+            changeHanlder(event);
+            const value = event.target.value;
+            if (!validateNumber(value)) {
+              setError({ ...error, life: "La vida debe ser un número entre 1 y 100" });
+            } else {
+              setError({ ...error, life: "" });
+            }
+          }}name="life"/>
         <p>{error.life}</p>
 
       </div>
       <div>
         <label>Ataque</label>
-        <input type="number" value={form.attack} onChange={changeHanlder} name="attack" />
-        <p>{error.number}</p>
+        
+        <input type="number" value={form.attack} onChange={(event) => {
+            changeHanlder(event);
+            const value = event.target.value;
+            if (!validateNumber(value)) {
+              setError({ ...error, attack: "El ataque debe ser un número entre 1 y 100" });
+            } else {
+              setError({ ...error, attack: "" });
+            }
+          }}name="attack"/>
+
+        <p>{error.attack}</p>
 
       </div>
       <div>
         <label>Defensa</label>
-        <input type="number" value={form.defense} onChange={changeHanlder} name="defense" />
+        
+        <input type="number" value={form.defense} onChange={(event) => {
+            changeHanlder(event);
+            const value = event.target.value;
+            if (!validateNumber(value)) {
+              setError({ ...error, defense: "La defensa debe ser un número entre 1 y 100" });
+            } else {
+              setError({ ...error, defense: "" });
+            }
+          }}name="defense"/>
         <p>{error.defense}</p>
 
       </div>
       <div>
         <label>Velocidad</label>
-        <input type="number" value={form.speed} onChange={changeHanlder} name="speed" />
+       
+        <input type="number" value={form.speed} onChange={(event) => {
+            changeHanlder(event);
+            const value = event.target.value;
+            if (!validateNumber(value)) {
+              setError({ ...error, speed: "La velocidad debe ser un número entre 1 y 100" });
+            } else {
+              setError({ ...error, speed: "" });
+            }
+          }}name="speed"/>
         <p>{error.speed}</p>
 
       </div>
       <div>
         <label>Altura</label>
-        <input type="number" value={form.height} onChange={changeHanlder} name="height" />
+        <input type="number" value={form.height} onChange={(event) => {
+            changeHanlder(event);
+            const value = event.target.value;
+            if (!validateNumber(value)) {
+              setError({ ...error, height: "La altura debe ser un número entre 1 y 100" });
+            } else {
+              setError({ ...error, height: "" });
+            }
+          }}name="height"/>
         <p>{error.height}</p>
 
       </div>
       <div>
         <label>Peso</label>
-        <input type="number" value={form.weight} onChange={changeHanlder} name="weight" />
+        <input type="number" value={form.weight} onChange={(event) => {
+            changeHanlder(event);
+            const value = event.target.value;
+            if (!validateNumber(value)) {
+              setError({ ...error, weight: "La defensa debe ser un número entre 1 y 100" });
+            } else {
+              setError({ ...error, weight: "" });
+            }
+          }}name="weight"/>
         <p>{error.weight}</p>
 
       </div>

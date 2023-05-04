@@ -29,22 +29,22 @@ function Filters() {
     }
 
     return (
-        <div>
+        <div className="filters-container">
 
-            <select onChange={handlerType}>
+            <select className="filter-select" onChange={handlerType}>
                 <option value="default">Select pokemon type</option>
                 {types.map((type, index) => (
                     <option key={index} value={type} > {type} </option>
                 ))}
             </select>
 
-            <select name="" id="origin" className="select" onChange={handlerOrigin} >
+            <select  id="origin" className="filter-select" onChange={handlerOrigin} >
                 <option value="default">Select origin</option>
                 <option value="API">from poke Api</option>
                 <option value="BDD">from BDD</option>
             </select>
 
-            <select name="" id="order" className="select" onChange={handlerOrder}>
+            <select  id="order" className="filter-select" onChange={handlerOrder}>
                 <option value="default">Select order</option>
                 <option value="A">Ascendent</option>
                 <option value="D">Descendent</option>

@@ -32,7 +32,7 @@ import { getAllPokemon,getPokemonsByName} from '../../redux/actions'
   return (
     <div>
        <input
-        
+        className="poke-searchbar"
         placeholder="Buscar..."
         value={searchTerm}
         onChange={handleChange}

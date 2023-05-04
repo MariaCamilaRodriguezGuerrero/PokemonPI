@@ -36,7 +36,8 @@ function Form() {
     height: "",
     weight: "",
     type1: "",
-    type2: ""
+    type2: "",
+    error:""
   })
 
   const changeHanlder = (event) => {
@@ -120,12 +121,22 @@ function Form() {
 
     axios
       .post("http://localhost:3001/pokemons", form)
-      .then((res) => alert("Tu Pokemon ha sido creado "))
+      .then((res) => setError({ ...error, error: "Tu pokemon fue creado con exito" }))
       .catch((err) => {
-        if (err.response.status == 403) { alert("Este pokemon ya existe, intenta creando uno propio") } else if (err.response.status === 402) {
-          alert("Ya se ha creado este pokemon anteriormente,animate a buscar otro nombre")
+        if (err.response.status == 403) {
+          setError({ ...error, error: "Este pokemon ya existe, intenta creando uno propio" });
+        } else if (err.response.status === 402) {
+          setError({ ...error, error: "Este pokemon ya fue creado, animate a crear uno con un nuevo nombre" });
+        } else {
+          setError({ ...error, error: "Hubo un error" });
         }
       });
+      // .catch((err) => {
+      //   if (err.response.status == 403) { alert("Este pokemon ya existe, intenta creando uno propio") } else if (err.response.status === 402) {
+      //     alert("Ya se ha creado este pokemon anteriormente,animate a buscar otro nombre")
+      //   }
+
+      // });
 
   };
 
@@ -135,6 +146,7 @@ function Form() {
       <div className='welcome-text'>
                 <h1>CREA TU PROPIO POKEMON</h1>
             </div>
+            {error.error && <div className='errorform'>{error.error}</div>}      
     <form onSubmit={submitHandler} className='form'>
       <div>
         <label>Nombre </label>
@@ -175,7 +187,7 @@ function Form() {
       </div>
       <div>
         <label>Ataque </label>
-        
+
         <input type="number" value={form.attack} onChange={(event) => {
             changeHanlder(event);
             const value = event.target.value;
@@ -191,7 +203,7 @@ function Form() {
       </div>
       <div>
         <label>Defensa </label>
-        
+
         <input type="number" value={form.defense} onChange={(event) => {
             changeHanlder(event);
             const value = event.target.value;
@@ -206,7 +218,7 @@ function Form() {
       </div>
       <div>
         <label>Velocidad </label>
-       
+
         <input type="number" value={form.speed} onChange={(event) => {
             changeHanlder(event);
             const value = event.target.value;

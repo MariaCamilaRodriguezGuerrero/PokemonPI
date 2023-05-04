@@ -6,7 +6,7 @@ const {Pokemon, Type} = require("../db")
 const getPokemons = async (req, res) => {
     const { name } = req.query
     try {
-        const response = await axios.get(`${URL}?offset=0&limit=100`)
+        const response = await axios.get(`${URL}?offset=0&limit=30`)
         const pokemons = response.data.results;
 // console.log("estos son los pokemons: "+pokemons);
 

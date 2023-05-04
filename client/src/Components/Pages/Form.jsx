@@ -131,9 +131,13 @@ function Form() {
 
 
   return (
-    <form onSubmit={submitHandler}>
+    <div className='form-container'>
+      <div className='welcome-text'>
+                <h1>CREA TU PROPIO POKEMON</h1>
+            </div>
+    <form onSubmit={submitHandler} className='form'>
       <div>
-        <label>Nombre</label>
+        <label>Nombre </label>
         <input type="text" value={form.name} onChange={(event) => { changeHanlder(event); validateName(event.target.value) }}
           name="name"
         />
@@ -141,7 +145,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Imagen</label>
+        <label>Imagen </label>
         <input type="text" value={form.image} onChange={(event) => {
           changeHanlder(event);
           if (validateImage(event.target.value)) {
@@ -156,7 +160,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Vida</label>
+        <label>Vida </label>
         <input type="number" value={form.life} onChange={(event) => {
             changeHanlder(event);
             const value = event.target.value;
@@ -170,7 +174,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Ataque</label>
+        <label>Ataque </label>
         
         <input type="number" value={form.attack} onChange={(event) => {
             changeHanlder(event);
@@ -186,7 +190,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Defensa</label>
+        <label>Defensa </label>
         
         <input type="number" value={form.defense} onChange={(event) => {
             changeHanlder(event);
@@ -201,7 +205,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Velocidad</label>
+        <label>Velocidad </label>
        
         <input type="number" value={form.speed} onChange={(event) => {
             changeHanlder(event);
@@ -216,7 +220,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Altura</label>
+        <label>Altura </label>
         <input type="number" value={form.height} onChange={(event) => {
             changeHanlder(event);
             const value = event.target.value;
@@ -230,7 +234,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Peso</label>
+        <label>Peso </label>
         <input type="number" value={form.weight} onChange={(event) => {
             changeHanlder(event);
             const value = event.target.value;
@@ -244,7 +248,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Tipo 1</label>
+        <label>Tipo 1 </label>
         <select value={form.type1} onChange={changeHanlder} name="type1">
           <option value="">Selecciona un tipo</option>
           {types.map((type, index) => (
@@ -256,7 +260,7 @@ function Form() {
 
       </div>
       <div>
-        <label>Tipo 2</label>
+        <label>Tipo 2 </label>
         <select value={form.type2} onChange={changeHanlder} name="type2">
           <option value="">Selecciona un tipo</option>
           {types.map((type, index) => (
@@ -268,6 +272,7 @@ function Form() {
       </div>
       <button type='submit'>Crear tu pokemon</button>
     </form>
+    </div>
   )
 }
 export default Form;

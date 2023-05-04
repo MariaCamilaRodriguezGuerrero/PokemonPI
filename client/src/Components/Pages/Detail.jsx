@@ -1,44 +1,67 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getPokemonById,deletePokemon} from "../../redux/actions"
+import { getPokemonById, deletePokemon } from "../../redux/actions"
 import { useParams } from 'react-router-dom';
 
 
-function Detail (){
-    const {id}=useParams()
+function Detail() {
+    const { id } = useParams()
 
     const dispatch = useDispatch();
     const thePokemon = useSelector((state) => state.pokemon)
 
     useEffect(() => {
         dispatch(getPokemonById(id));
-        return()=> dispatch (deletePokemon())
-      }, [id]);
+        return () => dispatch(deletePokemon())
+    }, [id]);
 
-      console.log(thePokemon)
-      
-      
-        return(
-            <div>
-                <h1>ESTA ES LA INFROMACIÓN DE TU POKEMON {id}</h1>
-                <h1>nombre: {thePokemon.name}</h1>  
-                <h1>id: {thePokemon.id}</h1> 
-                <h1>vida: {thePokemon.life}</h1>
-                <h1>ataque: {thePokemon.attack}</h1> 
-                <h1>defensa: {thePokemon.defense}</h1> 
-                <h1>velocidad: {thePokemon.speed}</h1> 
-                <h1>altura: {thePokemon.height}</h1> 
-                <h1>peso: {thePokemon.weight}</h1> 
-                <h1>tipo: {thePokemon.types}</h1> 
-                <img src={thePokemon.image} alt="img not found"/>
-                        
-    
-    
+    console.log(thePokemon)
+
+
+    return (
+        <div>
+
+            <div className='welcome-text'>
+                <h1>ESTA ES LA INFROMACIÓN DE TU POKEMON</h1>
             </div>
-        )
-      
-        
-      
-    
+
+
+            <div className="container-detail">
+
+                <div className='info'>
+
+                    <h1>nombre: {thePokemon.name}</h1>
+                    <h1>#  {thePokemon.id}</h1>
+                    <h1>❣️: {thePokemon.life}</h1>
+                    <h1>⚔: {thePokemon.attack}</h1>
+                    <h1>🛡: {thePokemon.defense}</h1>
+                    <h1>👣: {thePokemon.speed}</h1>
+                    <h1>📊: {thePokemon.height}</h1>
+                    <h1>:⚖ {thePokemon.weight}</h1>
+                    <h1>🧬: {thePokemon.types}</h1>
+                </div>
+
+                <div className='imagen'>
+                    <img src={thePokemon.image} alt="img not found" />
+                    <h1>#:id   ❣️:Vida</h1>
+                    <h1>⚔:Ataque    🛡:Defensa</h1>                    
+                    <h1>👣:Velocidad  🧬:Tipos</h1>
+                    <h1>📊:Altura  ⚖:Peso</h1>
+                    
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+    )
+
+
+
+
 }
 export default Detail;

@@ -18,3 +18,4 @@ const PokePaginado = ({page, setPage, max}) => {
   )
 }
 export default PokePaginado
+

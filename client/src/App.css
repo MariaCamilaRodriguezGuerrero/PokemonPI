@@ -13,6 +13,8 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,3 +38,193 @@
     transform: rotate(360deg);
   }
 }
+
+/* Boton landind */
+
+.pokeball-button {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%; /* Hace que el botón tenga forma redonda */
+  background-image: url('../src/Components/images/Pokebola.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px #000;
+}
+/* letrero welcome */
+.welcome-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 3em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  text-align: center;
+  animation-name: color-change;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes color-change {
+  0% {
+    color: red;
+  }
+  33% {
+    color: white;
+  }
+  67% {
+    color: black;
+  }
+  100% {
+    color: red;
+  }
+}
+/* cards */
+.poke-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px; /* ajustar según sea necesario */
+  margin: 0 auto;
+}
+.poke-card {
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.poke-card img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.poke-card h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.poke-card p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* Details */
+.container-detail{
+  width: 50%;
+  height: 100%;
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  align-items:center;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+img {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.info {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.imagen {
+  width: 50%;
+  float: right;
+}
+
+.imagen img {
+  max-width: 100%;
+  height: auto;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  height: 100%;
+  margin: 0 auto; 
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  
+}
+
+.form label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.form input:focus {
+  outline: none;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form input[type="submit"] {
+  background-color: #3f51b5;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.form input[type="submit"]:hover {
+  background-color: #2c3e50;
+}
+
+.form p {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.titulo {
+  font-size: 48px;
+  font-weight: bold;
+  color: #d18484;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin: 20px;
+  text-align: center;
+}
+

@@ -3,7 +3,8 @@ import pokeImage from "../images/pokebolas.jpg"
 
 export function PokeCard({ name, image, id, type }){
     return(
-        <div className="poke_card">           
+        
+        <div className="poke-card">           
             
          <Link to={`/detail/${id}`}> <h2>{name}</h2></Link>
                   

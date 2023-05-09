@@ -121,7 +121,7 @@ function Form() {
 
     axios
       .post("http://localhost:3001/pokemons", form)
-      .then((res) => setError({ ...error, error: "Tu pokemon fue creado con exito" }))
+      .then((res) => setError({ ...error, error: "Tu pokemon fue creado con exito, dirigite al centro pokemon para conocerlo" }))
       .catch((err) => {
         if (err.response.status == 403) {
           setError({ ...error, error: "Este pokemon ya existe, intenta creando uno propio" });

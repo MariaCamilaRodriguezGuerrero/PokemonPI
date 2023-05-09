@@ -15,7 +15,14 @@ function Detail() {
         return () => dispatch(deletePokemon())
     }, [id]);
 
-    console.log(thePokemon)
+    let tipos =""
+
+    if(thePokemon.types){
+        tipos=thePokemon.types
+    } else if (thePokemon.Types){
+        tipos = thePokemon.Types.map(types=>types.name)  
+        tipos=tipos.join(" and ")      
+    }
 
 
     return (
@@ -37,8 +44,10 @@ function Detail() {
                     <h1>🛡: {thePokemon.defense}</h1>
                     <h1>👣: {thePokemon.speed}</h1>
                     <h1>📊: {thePokemon.height}</h1>
-                    <h1>:⚖ {thePokemon.weight}</h1>
-                    <h1>🧬: {thePokemon.types}</h1>
+                    <h1>⚖: {thePokemon.weight}</h1>
+                    <h1>🧬:{tipos}</h1>
+                    
+                    
                 </div>
 
                 <div className='imagen'>

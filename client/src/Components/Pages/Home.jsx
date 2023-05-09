@@ -37,11 +37,11 @@ function Home(props) {
     <div >
       <h1 className='titulo'>Welcome to Pokemon center</h1>
       {isPageOne &&<h1>Pokefiltros y Pokebusqueda</h1>}
-      {isPageOne && <PokeSearchBar/>}
+      <PokeSearchBar setPage={setPage}/>
       <div>
         <div>
           
-          {isPageOne &&<PokeFiltros/>}
+          <PokeFiltros setPage={setPage}/>
         </div>    
         <main>
           <section className="poke-card-container">

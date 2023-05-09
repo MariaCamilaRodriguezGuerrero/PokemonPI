@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import pokeImage from "../images/pokebolas.jpg"
+import pokeImage from "../images/quien-es-ese-pokemon.jpg"
 
 export function PokeCard({ name, image, id, type }){
     return(

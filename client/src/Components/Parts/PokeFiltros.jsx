@@ -4,7 +4,7 @@ import { filterType, filterOrder,filterOrigin} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { getTypes } from "../../redux/actions"
 
-function Filters() {
+function Filters({setPage}) {
 
     const types = useSelector((state) => state.types)
     useEffect(() => {
@@ -17,14 +17,17 @@ function Filters() {
 
     const handlerType = (event) => {
         dispatch(filterType(event.target.value))
+        setPage(1)
         //console.log("filtro dieta ",event.target.value)
     }
     const handlerOrigin = (event) => {
         dispatch(filterOrigin(event.target.value))
+        setPage(1)
         //console.log("filtro origen ",event.target.value)
     }
     const handlerOrder = (event) => {
         dispatch(filterOrder(event.target.value))
+        setPage(1)
         //console.log("filtro orden ",event.target.value)
     }
 

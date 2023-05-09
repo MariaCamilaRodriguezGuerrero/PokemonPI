@@ -4,7 +4,7 @@ import React,{useState} from 'react';
 import { useDispatch} from 'react-redux'
 import { getAllPokemon,getPokemonsByName} from '../../redux/actions'
 
-  const PokeSearchBar = () => {
+  const PokeSearchBar = ({setPage}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const dispatch = useDispatch();
 
@@ -18,6 +18,7 @@ import { getAllPokemon,getPokemonsByName} from '../../redux/actions'
     
     const handleSearch = () => {
       dispatch(getPokemonsByName(searchTerm));
+      setPage(1)
     };
 
     const handleKeyPress = (event) => {

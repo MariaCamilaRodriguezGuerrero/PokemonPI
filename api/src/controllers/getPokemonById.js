@@ -13,9 +13,12 @@ const getPokemonById = async (req, res) => {
                     attributes: ["name"],
                     through: {
                         attributes: []
-                    }
-                }
-            })
+                    }}})
+
+            console.log(pokemonDB.Types[0]);
+            console.log(pokemonDB.Types[1]);
+                               
+
             res.status(200).json(pokemonDB)
         } else {
             const resp = await axios.get(`${URL}/${id}`)
